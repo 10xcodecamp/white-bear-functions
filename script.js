@@ -1,4 +1,4 @@
-const maxChar = 240; // Test commit
+const maxChar = 240;
 $("#save-card").click(function () {
    $("#overlay-success").toggleClass("d-flex d-none");
 });
