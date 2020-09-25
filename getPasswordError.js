@@ -1,39 +1,27 @@
-function showPasswordError(password, email) {
+function getPasswordError(password, email) {
    const emailParts = email.split("@"); // ["mike", "gmail.com"]
    const localPartEmail = emailParts[0]; // "mike"
    const unacceptablePasswords = getUnacceptablePasswords(); // return a list
    console.log(unacceptablePasswords);
 
+   // TODO: jQuery methods for displaying the error
+   // $("#sign-up-password-input").addClass("is-invalid");
+   // $("#sign-up-password-error").removeClass("d-none");
+   // $("#sign-up-password-error").html("Please create a password.");
+
    if (password.length === 0) {
-      $("#sign-up-password-input").addClass("is-invalid");
-      $("#sign-up-password-error").removeClass("d-none");
-      $("#sign-up-password-error").html("Please create a password.");
+      return "Please create a password.";
    } else if (password.length < 9 && password.length > 0) {
-      $("#sign-up-password-input").addClass("is-invalid");
-      $("#sign-up-password-error").removeClass("d-none");
-      $("#sign-up-password-error").html(
-         "Your password must be at least 9 characters."
-      );
+      return "Your password must be at least 9 characters.";
    } else if (
       password.toLowerCase().includes(localPartEmail) &&
       localPartEmail.length >= 4
    ) {
-      $("#sign-up-password-input").addClass("is-invalid");
-      $("#sign-up-password-error").removeClass("d-none");
-      $("#sign-up-password-error").html(
-         "All or part of your email address cannot be used in your password."
-      );
+      return "All or part of your email address cannot be used in your password.";
    } else if (unacceptablePasswords.includes(password.toLowerCase())) {
-      $("#sign-up-password-input").addClass("is-invalid");
-      $("#sign-up-password-error").removeClass("d-none");
-      $("#sign-up-password-error").html(
-         `Your password contains a commonly used password, “${password.toLowerCase()}” and can be easily discovered by attackers. Please use something else.`
-      );
+      return `Your password contains a commonly used password, “${password.toLowerCase()}” and can be easily discovered by attackers Please use something else.`;
    } else {
-      $("#sign-up-password-input").removeClass("is-invalid");
-      $("#sign-up-password-input").addClass("is-valid");
-      $("#sign-up-password-error").addClass("d-none");
-      $("#sign-up-password-error").html("");
+      return "";
    }
 }
 

@@ -98,7 +98,10 @@ $("#lets-go").click(function () {
       $("#sign-up-email-error").addClass("d-none");
    }
 
-   showPasswordError(password, email);
+   const passwordError = getPasswordError(password, email); // getPasswordError should return a string
+   console.log(passwordError);
+
+   // showError(element, errorMessage) // TODO: Make work for both email and password
 
    let today = new Date(Date.now());
    // to test other days:
