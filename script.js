@@ -99,28 +99,12 @@ $("#lets-go").click(function () {
    }
 
    const passwordError = getPasswordError(password, email); // getPasswordError should return a string
-   console.log(passwordError);
 
    if (passwordError !== "") {
-      $("#sign-up-password-input").addClass("is-invalid");
-      $("#sign-up-password-error").html(passwordError);
+      showError("#sign-up-password", passwordError);
    } else {
-      $("#sign-up-password-input").removeClass("is-invalid");
-      $("#sign-up-password-error").html(passwordError); // ""
+      hideError("#sign-up-password", passwordError);
    }
-
-   const emailError = getEmailError(email);
-   console.log(emailError);
-
-   if (emailError !== "") {
-      $("#sign-up-email-input").addClass("is-invalid");
-      $("#sign-up-email-error").html(emailError);
-   } else {
-      $("#sign-up-email-input").removeClass("is-invalid");
-      $("#sign-up-email-error").html(emailError); // ""
-   }
-
-   // showError(element, errorMessage) // TODO: Make work for both email and email
 
    let today = new Date(Date.now());
    // to test other days:
@@ -148,3 +132,13 @@ $("#lets-go").click(function () {
    }
    const createdAt = yearPart + paddedMonth + paddedDay;
 });
+
+function showError(element, message) {
+   $(`${element}-input`).addClass("is-invalid");
+   $(`${element}-error`).html(message);
+}
+
+function hideError(element, message) {
+   $(`${element}-input`).removeClass("is-invalid");
+   $(`${element}-error`).html(message);
+}
