@@ -4,11 +4,6 @@ function getPasswordError(password, email) {
    const unacceptablePasswords = getUnacceptablePasswords(); // return a list
    console.log(unacceptablePasswords);
 
-   // TODO: jQuery methods for displaying the error
-   // $("#sign-up-password-input").addClass("is-invalid");
-   // $("#sign-up-password-error").removeClass("d-none");
-   // $("#sign-up-password-error").html("Please create a password.");
-
    if (password.length === 0) {
       return "Please create a password.";
    } else if (password.length < 9 && password.length > 0) {
